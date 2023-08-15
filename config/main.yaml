@@ -1,0 +1,14 @@
+server:
+  port: "8008"
+
+database:
+  host: "dbhost"
+  port: 5432
+  username: "admin"
+  password: "admin"
+  dbname: "user"
+
+redis:
+  host: "redishost"
+  port: 6379
+  password: "admin"

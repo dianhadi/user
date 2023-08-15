@@ -1,0 +1,50 @@
+version: "3"
+services:
+  app:
+    container_name: golang_app
+    build: .
+    ports:
+      - "8008:8008"
+    depends_on:
+      - db
+    networks:
+      - elastic_elastic
+    environment:
+      ELASTIC_APM_SERVER_URL: http://apm-server:8200
+      ELASTIC_APM_SERVICE_NAME: user-service
+    volumes:
+      - /Users/dianhadiana/Work/go/src/github.com/dianhadi/user/logs:/var/log
+  db:
+    container_name: dbhost
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: user
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./schema:/docker-entrypoint-initdb.d
+    networks:
+      - elastic_elastic
+  redis:
+    container_name: redishost
+    image: redis:alpine
+    command: redis-server --requirepass admin
+    ports:
+      - 6379:6379
+    networks:
+      - elastic_elastic
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - elastic_elastic
+networks:
+  elastic_elastic:
+    external: true
