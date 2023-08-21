@@ -2,13 +2,13 @@ server:
   port: "8008"
 
 database:
-  host: "dbhost"
+  host: "db.golang.host"
   port: 5432
-  username: "admin"
-  password: "admin"
+  username: "admin_go"
+  password: "admin_go"
   dbname: "user"
 
 redis:
-  host: "redishost"
+  host: "redis.golang.host"
   port: 6379
-  password: "admin"
+  password: "admin_go"

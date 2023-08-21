@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    container_name: golang_app
+    container_name: app.golang.host
     build: .
     ports:
       - "8008:8008"
@@ -15,11 +15,11 @@ services:
     volumes:
       - /Users/dianhadiana/Work/go/src/github.com/dianhadi/user/logs:/var/log
   db:
-    container_name: dbhost
+    container_name: db.golang.host
     image: postgres:alpine
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin_go
+      POSTGRES_PASSWORD: admin_go
       POSTGRES_DB: user
     ports:
       - "5432:5432"
@@ -28,9 +28,9 @@ services:
     networks:
       - elastic_elastic
   redis:
-    container_name: redishost
+    container_name: redis.golang.host
     image: redis:alpine
-    command: redis-server --requirepass admin
+    command: redis-server --requirepass admin_go
     ports:
       - 6379:6379
     networks:

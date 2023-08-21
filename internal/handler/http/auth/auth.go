@@ -38,18 +38,17 @@ func (h Handler) AuthenticateMiddleware(next http.Handler) http.Handler {
 		defer span.End()
 
 		auth := r.Header.Get("Authorization")
-		if auth == "" || len(auth) < 8 {
+		if auth == "" {
 			err := errors.NewWithMessage(errors.StatusAuthorizationInvalid, "Token is required")
 			helper.Write(w, ctx, err, nil)
 			return
 		}
-		if auth[:6] != "Bearer" {
+		token := utils.GetTokenFromHeader(r)
+		if token == "" {
 			err := errors.NewWithMessage(errors.StatusAuthorizationInvalid, "Token is invalid")
 			helper.Write(w, ctx, err, nil)
 			return
 		}
-
-		token := auth[7:]
 
 		user, err := h.usecaseAuth.Authenticate(ctx, token)
 		if err != nil {

@@ -35,16 +35,20 @@ func main() {
 	log.New(serviceName)
 
 	log.Info("Get Configuration")
-	config, err := config.GetConfig("config/main.yaml")
+	appConfig, err := config.GetConfig("config/main.yaml")
+	if err != nil {
+		panic(err)
+	}
+	err = config.LoadPublicKey("files/public_key.pem")
 	if err != nil {
 		panic(err)
 	}
 
 	log.Info("Connect to Database")
-	db := database.New(config.Database.Host, config.Database.Port, config.Database.Username, config.Database.Password, config.Database.DBName)
+	db := database.New(appConfig.Database.Host, appConfig.Database.Port, appConfig.Database.Username, appConfig.Database.Password, appConfig.Database.DBName)
 
 	log.Info("Connect to Redis")
-	redis, err := redis.New(config.Redis.Host, config.Redis.Port, config.Redis.Password)
+	redis, err := redis.New(appConfig.Redis.Host, appConfig.Redis.Port, appConfig.Redis.Password)
 	if err != nil {
 		panic(err)
 	}
@@ -85,6 +89,7 @@ func main() {
 	r.Use(helper.Recover)
 
 	authToken := chi.Chain(handlerAuth.AuthenticateMiddleware)
+	jwtToken := chi.Chain(helper.JWTMiddleware)
 
 	log.Info("Register Route")
 	r.Post("/v1/register", handlerUser.Register)
@@ -92,14 +97,14 @@ func main() {
 	r.Post("/v1/authenticate", handlerAuth.Authenticate) // for external service
 
 	r.Get("/v1/user/{id:[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}}", handlerUser.GetUserByID)
-	r.Get("/v1/user/{username}", handlerUser.GetUserByUsername)
+	r.With(jwtToken...).Get("/v1/user/{username}", handlerUser.GetUserByUsername)
 
-	r.With(authToken...).Post("/v1/change-password", handlerUser.ChangePassword)
+	r.With(authToken...).Patch("/v1/change-password", handlerUser.ChangePassword)
 
 	r.Handle("/metrics", promhttp.Handler())
 
-	log.Infof("Starting server on port %s...", config.Server.Port)
-	startServer(":"+config.Server.Port, r)
+	log.Infof("Starting server on port %s...", appConfig.Server.Port)
+	startServer(":"+appConfig.Server.Port, r)
 }
 
 func startServer(port string, r http.Handler) {

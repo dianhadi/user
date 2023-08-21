@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"net/http"
+	"strings"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -31,8 +32,11 @@ func GenerateToken(username string) string {
 
 func GetTokenFromHeader(r *http.Request) string {
 	authHeader := r.Header.Get("Authorization")
-	if authHeader != "" {
-		return authHeader[len("Bearer "):]
+
+	parts := strings.Split(authHeader, " ")
+	if len(parts) == 2 && parts[0] == "Bearer" {
+		return parts[1]
 	}
 	return ""
+
 }

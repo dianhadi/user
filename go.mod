@@ -3,6 +3,7 @@ module github.com/dianhadi/user
 go 1.20
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-chi/chi v1.5.4
 	github.com/go-stack/stack v1.8.1
 	github.com/gomodule/redigo v1.8.9
