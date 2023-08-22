@@ -94,9 +94,9 @@ func main() {
 	log.Info("Register Route")
 	r.Post("/v1/register", handlerUser.Register)
 	r.Post("/v1/login", handlerAuth.Login)
-	r.Post("/v1/authenticate", handlerAuth.Authenticate) // for external service
 
-	r.Get("/v1/user/{id:[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}}", handlerUser.GetUserByID)
+	r.With(jwtToken...).Post("/v1/authenticate", handlerAuth.Authenticate) // for external service
+	r.With(jwtToken...).Get("/v1/user/{id:[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}}", handlerUser.GetUserByID)
 	r.With(jwtToken...).Get("/v1/user/{username}", handlerUser.GetUserByUsername)
 
 	r.With(authToken...).Patch("/v1/change-password", handlerUser.ChangePassword)
