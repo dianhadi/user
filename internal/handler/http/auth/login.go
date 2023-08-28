@@ -3,10 +3,10 @@ package auth
 import (
 	"net/http"
 
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/entity"
 	"github.com/dianhadi/user/internal/handler/helper"
 	"github.com/dianhadi/user/pkg/errors"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/dianhadi/user/pkg/log"
+	"github.com/dianhadi/golib/log"
 
 	"github.com/go-stack/stack"
 )

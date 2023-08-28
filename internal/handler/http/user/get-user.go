@@ -3,8 +3,8 @@ package user
 import (
 	"net/http"
 
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/handler/helper"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 	"github.com/go-chi/chi"
 )

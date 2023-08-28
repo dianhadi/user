@@ -5,9 +5,9 @@ import (
 	"database/sql"
 	"time"
 
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/entity"
 	errors "github.com/dianhadi/user/pkg/errors"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 	"github.com/google/uuid"
 )

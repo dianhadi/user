@@ -4,14 +4,12 @@ go 1.20
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/dianhadi/golib v0.0.0-20230828032033-cf3af9c94083
 	github.com/go-chi/chi v1.5.4
 	github.com/go-stack/stack v1.8.1
-	github.com/gomodule/redigo v1.8.9
 	github.com/google/uuid v1.3.0
-	github.com/lib/pq v1.10.9
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.16.0
-	github.com/rs/zerolog v1.30.0
 	go.elastic.co/apm v1.15.0
 	go.elastic.co/apm/module/apmchi v1.15.0
 	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
@@ -26,8 +24,10 @@ require (
 	github.com/elastic/go-sysinfo v1.1.1 // indirect
 	github.com/elastic/go-windows v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/gomodule/redigo v1.8.9 // indirect
 	github.com/jcchavezs/porto v0.1.0 // indirect
 	github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
@@ -35,6 +35,7 @@ require (
 	github.com/prometheus/common v0.42.0 // indirect
 	github.com/prometheus/procfs v0.10.1 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
+	github.com/rs/zerolog v1.30.0 // indirect
 	github.com/santhosh-tekuri/jsonschema v1.2.4 // indirect
 	github.com/stretchr/testify v1.8.3 // indirect
 	go.elastic.co/apm/module/apmhttp v1.15.0 // indirect

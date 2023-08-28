@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/constant"
 	"github.com/dianhadi/user/internal/entity"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 )
 

@@ -3,10 +3,10 @@ package auth
 import (
 	"context"
 
+	"github.com/dianhadi/golib/redis"
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/entity"
 	"github.com/dianhadi/user/pkg/errors"
-	"github.com/dianhadi/user/pkg/redis"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 )
 

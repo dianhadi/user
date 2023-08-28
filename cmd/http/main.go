@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/dianhadi/user/pkg/database"
-	"github.com/dianhadi/user/pkg/log"
-	"github.com/dianhadi/user/pkg/redis"
+	"github.com/dianhadi/golib/database"
+	"github.com/dianhadi/golib/log"
+	"github.com/dianhadi/golib/redis"
 
 	"github.com/dianhadi/user/internal/config"
 	"github.com/dianhadi/user/internal/handler/helper"

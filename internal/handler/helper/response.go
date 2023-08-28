@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/dianhadi/golib/log"
 	"github.com/dianhadi/user/pkg/errors"
-	"github.com/dianhadi/user/pkg/log"
 )
 
 type response struct {

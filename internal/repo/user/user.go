@@ -3,8 +3,8 @@ package user
 import (
 	"context"
 
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/entity"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 )
 

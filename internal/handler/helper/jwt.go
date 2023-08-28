@@ -5,9 +5,9 @@ import (
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
+	"github.com/dianhadi/golib/tracer"
 	"github.com/dianhadi/user/internal/config"
 	"github.com/dianhadi/user/pkg/errors"
-	"github.com/dianhadi/user/pkg/tracer"
 	"github.com/dianhadi/user/pkg/utils"
 	"go.elastic.co/apm"
 )

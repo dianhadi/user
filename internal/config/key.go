@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/dianhadi/user/pkg/log"
+	"github.com/dianhadi/golib/log"
 )
 
 var PublicKey *rsa.PublicKey
